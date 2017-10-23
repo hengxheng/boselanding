@@ -39,7 +39,7 @@
 }
 
 $dark: #242424;
-
+$grey: #edebd4;
 body, html{
     padding:0;
     margin:0;
@@ -48,12 +48,15 @@ body, html{
 body{
     background: #f8f8f8;
     font-size: 14px;
-    line-height: 24px;
+    line-height: 1.2;
     color: #000;
     font-family: 'Gotham-Book';
     position: relative;
 }
 
+h2{
+  font-family: 'Gotham-Bold';
+}
 .site-inner{
   width: 1100px;
   margin: 0 auto;
@@ -61,12 +64,59 @@ body{
   box-sizing: border-box;
 }
 
-header.site-header{
+.btn-w{
+  display: inline-block;
+  padding: 10px 35px;
+  font-family: 'Gotham-Bold';
+  font-weight: bold;
+  color: #242424;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: #f8f8f8;
+  border-radius: 25px;
+  transition: opacity 0.3s ease-out;
+  background-clip: padding-box;
+  border: 1px solid #f8f8f8;
+  &:hover{
+    color: #f8f8f8;
+    text-decoration: none;
+    background: #242424;
+    border: 1px solid #f8f8f8;
+  }
+}
+
+.btn-b{
+  display: inline-block;
+  padding: 10px 35px;
+  font-family: 'Gotham-Bold';
+  font-weight: bold;
+  color: #f8f8f8;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: #242424;
+  border-radius: 25px;
+  transition: opacity 0.3s ease-out;
+  background-clip: padding-box;
+  border: 1px solid #242424;
+  &:hover{
+    color: #242424;
+    text-decoration: none;
+    background: #f8f8f8;
+    border: 1px solid #242424;
+  }
+}
+
+header.site-heaader{
   position: absolute;
   top:0;
   left:0;
   right:0;
   width: 100%;
+  z-index: 99;
 }
 
 footer.site-footer{
@@ -85,5 +135,139 @@ footer.site-footer{
       font-size: 12px;
       padding: 41px 20px 0;
     }
+  }
+}
+
+.home-banner-wrapper{
+  width: 100%;
+  height: calc( 100vh - 158px);
+  overflow: hidden;
+  position: relative;
+  .home-banner{
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width: 100%;
+    height: 100%;
+    
+  }
+  .home-banner-content{
+    width: 450px;
+    text-align: center;
+    color: #fff;
+    padding-top: 300px;
+    
+    h3{
+      font-size: 25px;
+      margin: 0 0 20px;
+      opacity:0;
+    }
+    h2{
+      font-family: 'Gotham-Bold';
+      font-size: 60px;
+      margin: 0 0 20px;
+    }
+    p{
+      font-size: 18px;
+      margin: 0 0 20px;
+      opacity:0;
+    }
+    a.btn-w{
+      opacity:0;
+    }
+  }
+}
+
+
+#p1{
+  background: url(../images/p650.jpg) no-repeat left center;
+  clip-path: polygon(0 0, 100% 0%, 90% 100%, 0% 100%);
+  background-size: cover;
+  width: 55%;
+  z-index:2;
+  transition: all 0.5s ease-in;
+  &.left{
+    width: 65%;
+    transition: all 0.5s ease-out;
+    h3{
+      opacity: 1;
+    }
+    p{
+      opacity: 1;
+    }
+    a.btn-w{
+      opacity: 1;
+    }
+  }
+  &.right{
+    width: 45%;
+    transition: all 0.5s ease-in;
+  }
+  .home-banner-content{
+    float:left;
+    padding-left: 90px;
+  }
+}
+
+#p2{
+  background: url(../images/p600.jpg) no-repeat right center;
+  background-size: cover;
+  z-index:1;
+  &.right{
+    h3{
+      opacity: 1;
+    }
+    p{
+      opacity: 1;
+    }
+    a.btn-w{
+      opacity: 1;
+    }
+  }
+  .home-banner-content{
+    float:right;
+    padding-right: 90px;
+  }
+}
+
+.product-page{
+  .page-header{
+    padding: 150px 0;
+    .page-header-inner{
+      text-align: center;
+      width: 60%;
+      background: rgba(255,255,255,0.8);
+      color: #000;
+      margin: 0 auto;
+      padding: 30px 40px;
+      h3{
+        font-size: 22px;
+        margin: 0 0 20px;
+      }
+      h2{
+        font-size: 52px;
+        margin: 0 0 20px;
+      }
+      p{
+        font-size: 16px;
+        margin: 0 0 20px;
+      }
+    }
+  }
+}
+
+#pro1{
+  .page-header{
+    background: url(../images/pf600.jpg) no-repeat center center;
+    background-size:cover;
+  }
+}
+
+#pro2{
+  .page-header{
+    background: url(../images/pf650.jpg) no-repeat center center;
+    background-size:cover;
   }
 }
