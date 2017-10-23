@@ -2,7 +2,6 @@ import AppRoot from './containers/app';
 import Home from './containers/HomePage';
 import P600 from './containers/P600Page';
 import P650 from './containers/P650Page';
-import NotFound from './containers/notfound';
 
 export const routes = [
     {
@@ -30,7 +29,7 @@ export const routes = [
             },
             {
                 path: "*",
-                component: NotFound
+                component: Home
             }
         ]
     }
