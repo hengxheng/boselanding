@@ -28,18 +28,62 @@
   font-style: normal;
 }
 
-$site-wide: 1280px;
+@font-face {
+  font-family: 'Gotham-Book';
+  src:  url('../fonts/Gotham-Book.eot?#iefix') format('embedded-opentype'),  
+        url('../fonts/Gotham-Book.woff') format('woff'), 
+        url('../fonts/Gotham-Book.ttf')  format('truetype'), 
+        url('../fonts/Gotham-Book.svg#Gotham-Book') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
-$red: #ec1c24;
-$text-color: #231f20;
+$dark: #242424;
 
 body, html{
     padding:0;
     margin:0;
 }
+
 body{
     background: #f8f8f8;
     font-size: 14px;
     line-height: 24px;
-    color: $text-color;
+    color: #000;
+    font-family: 'Gotham-Book';
+    position: relative;
+}
+
+.site-inner{
+  width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+header.site-header{
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  width: 100%;
+}
+
+footer.site-footer{
+  background: $dark;
+  padding-top: 30px;
+  .site-footer-inner{
+    display: flex;
+    flex-wrap: wrap;
+    .footer-logo{
+      img{
+        display:block;
+      }
+    }
+    .site-copy{
+      color: #fff;
+      font-size: 12px;
+      padding: 41px 20px 0;
+    }
+  }
 }
