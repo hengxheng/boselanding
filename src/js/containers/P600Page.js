@@ -1,7 +1,54 @@
 import React from "react";
+import DayPickerInput from "react-day-picker/DayPickerInput";
 import P600BG from "../../images/p600-right.jpg";
+import 'react-day-picker/lib/style.css';
 
 export default class P600 extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            formValue: {
+                firstname: "",
+                lastname: "",
+                email:"",
+                phone:"",
+                serialNo: "",
+                // state:"",
+                // street:"",
+                // postcode:"",
+                newsletter: false,
+                color: "Arctic White",   
+            },
+            selectedDays : new Date()
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleDayClick =this.handleDayClick.bind(this);
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        console.log( this.state.formValue );
+    }
+
+    handleChange(e){
+        const target = e.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        const old_state = this.state.formValue;
+        Object.assign(old_state, { [name] : value });
+        this.setState({
+            formValue: old_state
+        });
+    }
+
+    handleDayClick(day){
+        const old_state = this.state.formValue;
+        Object.assign(old_state, { date : day.format('DD/MM/YYYY')  });
+        this.setState({
+            formValue: old_state
+        });
+    };
+
     render() {
         return (
             <div id="pro1" className="product-page">
@@ -35,65 +82,90 @@ export default class P600 extends React.Component {
                 <div className="clear"></div>
                 <div className="page-form">
                     <div className="site-inner">
-                        <h3 className="form-header">Please enter your details below to receive FREE Wave®SoundTouch® music system IV</h3>
                         <div className="form-block">
-                        <form id="submit-form" action="#" method="post" encType="multipart/form-data">
-                            <input type="hidden" id="uploaded-file-name" name="uploaded-file-name" value=""/>
-                            <div className="form-ele">
-                                <div className="form-col1">
-                                    <input id="fullname" type="text" name="fullname" placeholder="Name*" />
-                                </div>
-                            </div>					
-                            <div className="form-ele">
-                                <div className="form-col1">
-                                    <input id="email" type="email" name="email" placeholder="Email*" />
-                                </div>
-                            </div>
-                            <div className="form-ele">
-                                <div className="form-col1">
-                                    <input id="c-email" type="email" name="confirm-email" placeholder="Confirm Email*" />
-                                </div>
-                            </div>
-                            <div className="form-ele">
-                                <div className="form-col1">
-                                    <input id="phone" type="text" name="phone" placeholder="Phone*" />
-                                </div>
-                            </div>
-                            <div className="form-ele">
-                                <div className="form-col1">
-                                    <input id="state" type="text" name="state" placeholder="State*" />
-                                </div>
-                            </div>
-                            <div className="form-ele">
-                                <div className="form-col1">
-                                    <div id="file-upload-area">
-                                        <div className="box__input">
-                                            <p>Drop or <a href="#" id="file-btn">Select</a> photograph to upload</p>
-                                            <input id="fileToUpload" type="file" name="upload-photo" />	
-                                        </div>
-                                        <div id="progress-wrp">
-                                            <div className="progress-bar"></div>
-                                            <div className="status">0%</div>
-                                        </div>
-                                        <div id="output"></div>
-                                        <a href="#" id="uplaod-btn">UPLOAD</a>
+                        <h3 className="form-header">Please enter your details below to receive FREE Wave®SoundTouch® music system IV</h3>
+                            <form id="submit-form" action="#" method="post" encType="multipart/form-data"
+                            onSubmit = { (e) => { this.handleSubmit(e) } } >
+                                <input type="hidden" id="uploaded-file-name" name="uploaded-file-name" value=""/>
+                                <div className="form-ele">
+                                    <div className="form-col2">
+                                        <label htmlFor="firstname">FIRST NAME*</label>
+                                        <input id="firstname" type="text" name="firstname" onChange={this.handleChange}/>
+                                    </div>
+                                    <div className="form-col2">
+                                        <label htmlFor="lastname">LAST NAME*</label>
+                                        <input id="lastname" type="text" name="lastname" onChange={this.handleChange}/>
+                                    </div>
+                                </div>					
+                                <div className="form-ele">
+                                    <div className="form-col2">
+                                        <label htmlFor="email">EMAIL*</label>
+                                        <input id="email" type="email" name="email" onChange={this.handleChange}/>
+                                    </div>
+                                    <div className="form-col2">
+                                        <label htmlFor="phone">PHONE*</label>
+                                        <input id="phone" type="text" name="phone" onChange={this.handleChange}/>
                                     </div>
                                 </div>
-                            </div>
-                            <div id="upload-output"></div>
-                            <div className="form-ele">
-                                <div className="form-col1">
-                                    <input type="checkbox" id="check-1" /><label>Yes, I'd like email updates regarding new products and promotions from Bose®.</label>
+                                <div className="form-ele">
+                                    <div className="form-col2">
+                                        <label htmlFor="serialNo">Lifestyle® 650 serial number*</label>
+                                        <input id="serialNo" type="text" name="serialNo" onChange={this.handleChange}/>
+                                    </div>
+                                    <div className="form-col2">
+                                        <label htmlFor="dop">Date of purchase</label>
+                                        <DayPickerInput id="dop" name="date" placeholder="DD/MM/YYYY" format="DD/MM/YYYY" onDayChange={this.handleDayClick} value={ this.state.formValue.date } />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="form-ele">
-                                <input type="submit" value="SUBMIT" id="submit-btn" />
-                            </div>
-                            <div className="form-ele">
-                                <div className="msg"></div>
-                            </div>
-                        </form>
-                    </div>
+                                <div className="form-ele">
+                                    <div className="form-col1">
+                                        <label htmlFor="shipping-address">SHIPPING ADDRESS*</label>
+                                        <textarea id="shipping-address" name="shippingAddress" value={ this.state.formValue.shippingAddress } onChange={this.handleChange}/>
+                                    </div>
+                                </div>
+                                <div className="form-ele">
+                                    <div className="form-col1">
+                                        <div id="file-upload-area">
+                                            <div className="box__input">
+                                                <p>Drop or <a href="#" id="file-btn">Select</a> photograph to upload</p>
+                                                <input id="fileToUpload" type="file" name="upload-photo" />	
+                                            </div>
+                                            <div id="progress-wrp">
+                                                <div className="progress-bar"></div>
+                                                <div className="status">0%</div>
+                                            </div>
+                                            <div id="output"></div>
+                                            <a href="#" id="uplaod-btn">UPLOAD</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="upload-output"></div>
+                                <div className="form-ele">
+                                    <div className="form-col1">
+                                        <input type="checkbox" id="newsletter" name="newsletter" onChange={this.handleChange}/><label className="forcheck">Yes, I'd like email updates regarding new products and promotions from Bose®.</label>
+                                    </div>
+                                </div>
+                                <div className="form-ele">
+                                    <div className="form-col1">
+                                        <label htmlFor="color">Pick color of FREE Wave® SoundTouch® music system IV</label>
+                                        <select id="color" name="color" value={ this.state.formValue.color } onChange={this.handleChange}>
+                                            <option value="Arctic White">Arctic White</option>
+                                            <option value="Black">Black</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-ele">
+                                    <div className="form-col1">
+                                        <input type="submit" value="SUBMIT" id="submit-btn" />
+                                    </div>
+                                </div>
+                                <div className="form-ele">
+                                    <div className="form-col1">
+                                        <div className="msg"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -315,4 +315,81 @@ footer.site-footer{
 .page-form{
   background: #f8f8f8;
   text-align: center;
+  padding: 60px 0;
+  .form-block{
+    width: 68%;
+    margin: 0 auto;
+    h3.form-header{
+      width: 80%;
+      font-family: 'Gotham-Book';
+      font-size: 22px;
+      margin: 0 auto 25px;
+    }
+    #submit-form{
+      background: #fff;
+      padding: 50px;
+      box-sizing: border-box;
+      border-radius: 3px;
+    }
+  }
+}
+
+.form-ele{
+  display:flex;
+  flex-wrap: wrap;
+  margin: 0 0 20px;
+  .form-col1{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 10px;
+  }
+  .form-col2{
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 10px;
+  }
+  label{
+    display:block;
+    width: 100%;
+    font-size: 15px;
+    margin: 0 0 10px;
+    text-align: left;
+    text-transform: uppercase;
+  }
+  input{
+    width: 100%;
+    border: 1px solid rgb(183, 183, 183);
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+  input[type="checkbox"]{
+    width: auto;
+    float: left;
+    margin-right: 10px;
+  }
+  select{
+    width: 100%;
+    border: 1px solid rgb(183, 183, 183);
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px;
+    background:#eeeeee;
+  }
+  label.forcheck{
+    text-transform: none;
+    font-size: 13px;
+    line-height: 20px;
+  }
+  textarea{
+    width: 100%;
+    border: 1px solid rgb(183, 183, 183);
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 10px;
+    height: 90px;
+  }
+  .DayPickerInput{
+    display:block;
+  }
 }
