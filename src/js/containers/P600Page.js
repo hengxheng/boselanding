@@ -2,6 +2,7 @@ import React from "react";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import P600BG from "../../images/p600-right.jpg";
 import 'react-day-picker/lib/style.css';
+import FileUploader from "../components/FileUploader";
 
 export default class P600 extends React.Component {
     constructor(){
@@ -125,26 +126,11 @@ export default class P600 extends React.Component {
                                 </div>
                                 <div className="form-ele">
                                     <div className="form-col1">
-                                        <div id="file-upload-area">
-                                            <div className="box__input">
-                                                <p>Drop or <a href="#" id="file-btn">Select</a> photograph to upload</p>
-                                                <input id="fileToUpload" type="file" name="upload-photo" />	
-                                            </div>
-                                            <div id="progress-wrp">
-                                                <div className="progress-bar"></div>
-                                                <div className="status">0%</div>
-                                            </div>
-                                            <div id="output"></div>
-                                            <a href="#" id="uplaod-btn">UPLOAD</a>
-                                        </div>
+                                        <label>Submit receipt*</label>
+                                        <FileUploader doneUpload = {() => { this.doneUpdate }}/>
                                     </div>
                                 </div>
                                 <div id="upload-output"></div>
-                                <div className="form-ele">
-                                    <div className="form-col1">
-                                        <input type="checkbox" id="newsletter" name="newsletter" onChange={this.handleChange}/><label className="forcheck">Yes, I'd like email updates regarding new products and promotions from Bose®.</label>
-                                    </div>
-                                </div>
                                 <div className="form-ele">
                                     <div className="form-col1">
                                         <label htmlFor="color">Pick color of FREE Wave® SoundTouch® music system IV</label>
@@ -152,6 +138,11 @@ export default class P600 extends React.Component {
                                             <option value="Arctic White">Arctic White</option>
                                             <option value="Black">Black</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div className="form-ele">
+                                    <div className="form-col1">
+                                        <input type="checkbox" id="newsletter" name="newsletter" onChange={this.handleChange}/><label className="forcheck">Yes, I'd like email updates regarding new products and promotions from Bose®.</label>
                                     </div>
                                 </div>
                                 <div className="form-ele">
