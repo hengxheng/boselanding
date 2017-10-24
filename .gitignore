@@ -1,5 +1,4 @@
 /node_modules
-/src/images
-/src/fonts
+/src/images/
 /.sass-cache
 /upload
