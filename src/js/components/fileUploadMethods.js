@@ -1,36 +1,3 @@
-// File uploader
-var $drop = $("#file-upload-area");
-$drop.on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-})
-.on('dragover dragenter', function() {
-    $drop.addClass('is-dragover');
-})
-.on('dragleave dragend drop', function() {
-    $drop.removeClass('is-dragover');
-})
-.on('drop', function(e) {
-    $("#fileToUpload").prop('files', e.originalEvent.dataTransfer.files);
-});
-  
-$("#file-btn").on("click", function(e){
-    e.preventDefault();
-    $("#fileToUpload").trigger("click");
-});
-  
-$("#fileToUpload").change(function(){
-    if( $(this).get(0).files.length != 0 ){
-      $(this).addClass("show");
-    }
-    else{
-      $(this).removeClass("show");
-      $("#file-btn").show();
-    }
-});
-  
-  
-
 // Upload file
 $("#uplaod-btn").on("click", function(e){
     e.preventDefault();

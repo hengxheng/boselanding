@@ -14,9 +14,12 @@ export default class P600 extends React.Component {
                 email:"",
                 phone:"",
                 serialNo: "",
-                // state:"",
-                // street:"",
-                // postcode:"",
+                date: "",
+                address1: "",
+                city:"",
+                state:"",
+                postcode:"",
+                country:"",
                 newsletter: false,
                 color: "Arctic White",   
             },
@@ -24,11 +27,6 @@ export default class P600 extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleDayClick =this.handleDayClick.bind(this);
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        console.log( this.state.formValue );
     }
 
     handleChange(e){
@@ -49,6 +47,11 @@ export default class P600 extends React.Component {
             formValue: old_state
         });
     };
+
+    handleSubmit(e) {
+        e.preventDefault();
+        console.log( this.state.formValue );
+    }
 
     render() {
         return (
@@ -87,7 +90,6 @@ export default class P600 extends React.Component {
                         <h3 className="form-header">Please enter your details below to receive FREE Wave®SoundTouch® music system IV</h3>
                             <form id="submit-form" action="#" method="post" encType="multipart/form-data"
                             onSubmit = { (e) => { this.handleSubmit(e) } } >
-                                <input type="hidden" id="uploaded-file-name" name="uploaded-file-name" value=""/>
                                 <div className="form-ele">
                                     <div className="form-col2">
                                         <label htmlFor="firstname">FIRST NAME*</label>
@@ -121,7 +123,27 @@ export default class P600 extends React.Component {
                                 <div className="form-ele">
                                     <div className="form-col1">
                                         <label htmlFor="shipping-address">SHIPPING ADDRESS*</label>
-                                        <textarea id="shipping-address" name="shippingAddress" value={ this.state.formValue.shippingAddress } onChange={this.handleChange}/>
+                                        <textarea id="shipping-address" name="shippingAddress" value={ this.state.formValue.shippingAddress } onChange={this.handleChange} placeholder="Address*"/>
+                                    </div>
+                                </div>
+                                <div className="form-ele">
+                                    <div className="form-col2">
+                                        <input id="city" type="text" name="city" onChange={this.handleChange} placeholder="City/ Town*"/>
+                                    </div>
+                                    <div className="form-col2">
+                                        <input id="city" type="text" name="state" onChange={this.handleChange} placeholder="State*"/>
+                                    </div>
+                                </div>
+                                <div className="form-ele">
+                                    <div className="form-col2">
+                                        <input id="city" type="text" name="city" onChange={this.handleChange} placeholder="Postcode*"/>
+                                    </div>
+                                    <div className="form-col2">
+                                        <select id="country" name="country" value={ this.state.formValue.country } onChange={this.handleChange}>
+                                            <option value="">Country*</option>  
+                                            <option value="AU">Australia</option>
+                                            <option value="NZ">New Zealand</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div className="form-ele">
