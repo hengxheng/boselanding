@@ -1,8 +1,10 @@
+import 'react-day-picker/lib/style.css';
+
 import React from "react";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import P600BG from "../../images/p600-right.jpg";
-import 'react-day-picker/lib/style.css';
 import FileUploader from "../components/FileUploader";
+import scrollToElement from 'scroll-to-element';
 
 export default class P600 extends React.Component {
     constructor(){
@@ -67,6 +69,14 @@ export default class P600 extends React.Component {
         }
     }
 
+    scrollToForm(e){
+        e.preventDefault();
+        scrollToElement('#page-form', {
+            offset: 0,
+            duration: 1000
+        });
+    }
+
     render() {
         return (
             <div id="pro1" className="product-page">
@@ -76,7 +86,7 @@ export default class P600 extends React.Component {
                             <h3>Thank you for purchasing</h3>
                             <h2>Lifestyle® 600 home entertainment system.</h2>
                             <p>For a limited time, receive a FREE Wave®SoundTouch® music system when you purchase a Lifestyle® 650 home entertainment system.</p>
-                            <a href="#" id="redeem-btn" className="btn-b">REDEEM FREE PRODUCT</a>
+                            <a href="#" id="redeem-btn" className="btn-b" onClick={ (e) => this.scrollToForm(e) }>REDEEM FREE PRODUCT</a>
                         </div>
                     </div>
                 </div>
@@ -98,7 +108,7 @@ export default class P600 extends React.Component {
                     </div>
                 </div>
                 <div className="clear"></div>
-                <div className="page-form">
+                <div id="page-form" className="page-form">
                     <div className="site-inner">
                         <div className="form-block">
                         <h3 className="form-header">Please enter your details below to receive FREE Wave®SoundTouch® music system IV</h3>
