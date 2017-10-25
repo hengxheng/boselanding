@@ -1,7 +1,7 @@
 <?php
 
-	$base_url = "http://localhost/slanding";
-	$page_title = "SanDisk";
+	$base_url = "http://localhost/bose_landing/server";
+	$page_title = "ADMIN";
 
 	$db = "localhost";
 	$username = "root";
@@ -17,7 +17,7 @@
 		$adjacents = 2;
 		$prevlabel = "&lsaquo; Prev";
 		$nextlabel = "Next &rsaquo;";
-		$out = "";
+		$out = '<div class="pagination"><ul>';
 		// previous
 		if ($page == 1) {
 			$out.= "<span>".$prevlabel."</span>\n";
@@ -47,7 +47,7 @@
 		} else {
 			$out.= "<span>".$nextlabel."</span>\n";
 		}
-		$out.= "";
+		$out.= "</ul></div>";
 		return $out;
 	}
 ?>

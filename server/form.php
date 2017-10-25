@@ -16,7 +16,7 @@
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
 	$serialNo = mysqli_real_escape_string($conn, $_POST['serialNo']);
 	$date = mysqli_real_escape_string($conn, $_POST['date']);
-	$address1 = mysqli_real_escape_string($conn, $_POST['address1']);
+	$address1 = mysqli_real_escape_string($conn, $_POST['address']);
 	$city = mysqli_real_escape_string($conn, $_POST['city']);
 	$state = mysqli_real_escape_string($conn, $_POST['state']);
 	$postcode = mysqli_real_escape_string($conn, $_POST['postcode']);
@@ -24,12 +24,15 @@
 	$country = mysqli_real_escape_string($conn, $_POST['country']);
 	$file = mysqli_real_escape_string($conn, $_POST['file']);
 	$newsletter = mysqli_real_escape_string($conn, $_POST['newsletter']);
-	if(!$newsletter){
+	if($newsletter){
+		$newsletter = "on";
+	}
+	else{
 		$newsletter = "off";
 	}
 
-	$sql = "INSERT INTO {$table_name} (firstname, lastname, email, phone, serialNo, purchased_date, address1, city, state, postcode, country, color, file, newsletter) VALUES 
-	('{$firstname}', '${$lastname}', '{$email}', '{$phone}', '{$serialNo}', '{$date}', '{$address1}', '{$city}', '{$state}', '{$postcode}', '{$country}', '{$color}', '{$file}', '{$newsletter}')";
+	$sql = "INSERT INTO {$table_name} (firstname, lastname, email, phone, serialNo, purchased_date, address1, city, state, postcode, country, color, upload_file, newsletter) VALUES 
+	('{$firstname}', '{$lastname}', '{$email}', '{$phone}', '{$serialNo}', '{$date}', '{$address1}', '{$city}', '{$state}', '{$postcode}', '{$country}', '{$color}', '{$file}', '{$newsletter}')";
 
 	if ($conn->query($sql) === TRUE) {
 	    

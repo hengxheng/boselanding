@@ -18,7 +18,7 @@ export default class P600 extends React.Component {
                 phone:"",
                 serialNo: "",
                 date: "",
-                address1: "",
+                address: "",
                 city:"",
                 state:"",
                 postcode:"",
@@ -151,9 +151,14 @@ export default class P600 extends React.Component {
             });
 
             const submited_url = document.location.origin+"/bose_landing/server/form.php";
-            axios.post(submited_url, data)
+            const params = Object.keys(data).map( (k) => {
+                return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+            }).join('&');
+
+            console.log("Params: ", params);
+            axios.post(submited_url, params)
                 .then( res => {
-                        console.log(res);
+                        console.log(res.data);
                     }
                 )
                 .catch(error => {
@@ -232,8 +237,8 @@ export default class P600 extends React.Component {
                                 </div>
                                 <div className="form-ele">
                                     <div className="form-col1">
-                                        <label htmlFor="shipping-address">SHIPPING ADDRESS*</label>
-                                        <textarea id="shipping-address" name="shippingAddress" value={ this.state.formValue.shippingAddress } onChange={this.handleChange} placeholder="Address*"/>
+                                        <label htmlFor="address">SHIPPING ADDRESS*</label>
+                                        <textarea id="address" name="address" value={ this.state.formValue.address } onChange={this.handleChange} placeholder="Address*"/>
                                     </div>
                                 </div>
                                 <div className="form-ele">

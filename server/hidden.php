@@ -46,7 +46,7 @@
 		</div>
 	<?php } elseif( isset($_SESSION['admin'])){
 
-		$per_page = 20;
+		$per_page = 15;
 
 		// Create connection
 		$conn = new mysqli($db, $username, $password, $dbname);
@@ -98,51 +98,39 @@
 			<?php
 				// pagination
 				$reload = $_SERVER['PHP_SELF'] . "?tpages=" . $tpages;
-				echo '<div class="pagination"><ul>';
 				if ($total_pages > 1) {
 					echo paginate($reload, $show_page, $total_pages);
 				}
-				echo "</ul></div>";
+			
+				// store db data to array
+				$records = array();
+				while($row = $result->fetch_assoc()) {
+					$records[] = $row;
+				}
 			?>
 			
 			<table>
 				<tr>
-					<!-- <td>ID</td> -->
-					<td>Name</td>
-					<td>Email</td>
-					<td>Phone</td>
-					<td>State</td>
-					<td>Photo</td>
-					<td>Link</td>
-					<td>Subscription</td>
+					<?php foreach ($records[0] as $k => $r): ?>
+						<th id="<?php echo $k; ?>"><?php echo str_replace("_", " ", $k) ?></th>
+					<?php endforeach; ?>
 				</tr>
-		<?php 
-			// output data of each row
-			while($row = $result->fetch_assoc()) {
-				$records[] = $row;
-			}
-			for($i=$start; $i<$end ; $i++){
-				if($i == $total) break;
-		?>	
-				<tr>
-					<!-- <td><?php echo $records[$i]['id']; ?></td> -->
-					<td><?php echo $records[$i]['name']; ?></td>
-					<td><?php echo $records[$i]['email']; ?></td>
-					<td><?php echo $records[$i]['phone']; ?></td>
-					<td><?php echo $records[$i]['state']; ?></td>
-					<td><?php echo $records[$i]['upload_file']; ?></td>
-					<td><?php echo $records[$i]['link']; ?></td>
-					<td><?php echo $records[$i]['newsletter']; ?></td>
-				</tr>    
-		<?php } ?>
+				<?php 
+					for($i=$start; $i<$end ; $i++){
+						if($i == $total) break;
+				?>	
+					<tr>
+						<?php foreach ($records[$i] as $rk => $rv): ?>
+							<td class="<?php echo $rk; ?>"><?php echo $records[$i][$rk]; ?></td>
+						<?php endforeach; ?>
+					</tr>    
+				<?php } ?>
 			</table>
 			<?php
 				// pagination
-				echo '<div class="pagination"><ul>';
 				if ($total_pages > 1) {
 					echo paginate($reload, $show_page, $total_pages);
 				}
-				echo "</ul></div>";
 			?>
 
 		</div>

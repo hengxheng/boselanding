@@ -10,16 +10,23 @@
     // sql to create table
     $sql = "CREATE TABLE IF NOT EXISTS {$table_name} (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-            name VARCHAR(60) NOT NULL,
-            email VARCHAR(50),
+            firstname VARCHAR(50),
+            lastname VARCHAR(50),
             phone VARCHAR(50),
+            email VARCHAR(50),
+            serialNo VARCHAR(10),
+            purchased_date VARCHAR(50),
+            address1 VARCHAR(150),
+            city VARCHAR(50),
             state VARCHAR(50),
+            postcode VARCHAR(50),
+            country VARCHAR(10),
+            color VARCHAR(50),
             upload_file VARCHAR(100),
-            link VARCHAR(150),
             newsletter VARCHAR(10)
         )";
     if ($conn->query($sql) === TRUE) {
-        echo "Table MyGuests created successfully";
+        echo "Table {$table_name} created successfully";
     } else {
         echo "Error creating table: " . $conn->error;
     }

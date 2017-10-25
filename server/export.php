@@ -11,7 +11,7 @@
     $result = $conn->query( $select );
 
     $header = "Name\tEmail\tPhone\tState\tPhoto\tLink\tSubscription\t";
-
+    
     $line = '';
     while($row = $result->fetch_assoc()) {
         $line .= "{$row['name']}\t{$row['email']}\t{$row['phone']}\t{$row['state']}\t{$row['upload_file']}\t{$row['link']}\t{$row['newsletter']}\t\n";

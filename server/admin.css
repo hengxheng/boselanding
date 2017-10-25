@@ -1,5 +1,5 @@
 .site-inner{
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 body.admin{
@@ -12,13 +12,26 @@ body.admin{
     border-collapse: collapse;
     margin: 50px auto;
 }
+.admin table th{
+    border: 1px solid #000;
+    text-align: center;
+    padding: 10px;
+    text-transform: capitalize;
+    background: #ddd;
+    color: #000;
+}
 
+.admin table th#id{
+    display:none;
+}
 .admin table td{
     border: 1px solid #000;
     text-align: center;
     padding: 10px;
 }
-
+.admin table td.id{
+    display:none;
+}
 .pagination{
   text-align: left;
 }
