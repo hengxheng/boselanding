@@ -7,19 +7,31 @@
     $conn = new mysqli($db, $username, $password, $dbname);
 
     $select = "SELECT * FROM {$table_name}";
-
-    $result = $conn->query( $select );
-
-    $header = "Name\tEmail\tPhone\tState\tPhoto\tLink\tSubscription\t";
+    $result = $conn->query($select);
+    $records = array();
+    while($row = $result->fetch_assoc()) {
+        $records[] = $row;
+    }
+    $header = "";
+    foreach ($records[0] as $k => $r){
+        if($k != "id"){
+            $n = ucfirst(str_replace("_", " ", $k));
+            $header .= $n."\t";
+        }
+    }
     
     $line = '';
-    while($row = $result->fetch_assoc()) {
-        $line .= "{$row['name']}\t{$row['email']}\t{$row['phone']}\t{$row['state']}\t{$row['upload_file']}\t{$row['link']}\t{$row['newsletter']}\t\n";
+    foreach ($records as $r) {
+        foreach ($r as $k => $v){
+            if($k != "id"){
+                $line .= $v."\t";
+            }
+        }
+        $line .= "\n";
     }
     $data = trim( $line );
     $data = str_replace( "\r" , "" , $data );
-    if ( $data == "" )
-    {
+    if ( $data == "" ){
         $data = "\n(0) Records Found!\n";                        
     }
 
