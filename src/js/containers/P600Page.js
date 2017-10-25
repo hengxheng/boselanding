@@ -27,11 +27,14 @@ export default class P600 extends React.Component {
                 file:""   
             },
             fileUploaded : false,
-            selectedDays : new Date()
+            selectedDays : new Date(),
+            submitStatus : "",
+            formMsg : ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleDayClick =this.handleDayClick.bind(this);
         this.doneUpdate = this.doneUpdate.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(e){
@@ -53,10 +56,7 @@ export default class P600 extends React.Component {
         });
     };
 
-    handleSubmit(e) {
-        e.preventDefault();
-        console.log( this.state.formValue );
-    }
+    
 
     doneUpdate(fileName){
         console.log("File name is: ", fileName);
@@ -76,6 +76,75 @@ export default class P600 extends React.Component {
             duration: 1000
         });
     }
+
+    //handle from submition
+    handleSubmit(e) {
+        e.preventDefault();
+        let data = this.state.formValue;
+        let valid = true;
+        let errorMsg = [];
+
+        let checkEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        let checkPhone = /^\d+$/;
+        let checkSerial = /^\d{6}$/;
+
+        if(data.firstname == ""){
+            valid = false;
+            errorMsg.push("First name is required.");
+        }
+        if(data.lastname == ""){
+            valid = false;
+            errorMsg.push("Last name is required.");
+        }
+        if(!checkEmail.test(data.email) || data.email == ""){
+            valid = false;
+            errorMsg.push("Invalid Email");
+        }
+        if(!checkPhone.test(data.phone) || data.phone == ""){
+            valid = false;
+            errorMsg.push("Invalid Phone");
+        }
+        if(!checkSerial.test(data.serialNo) || data.serialNo == ""){
+            valid = false;
+            errorMsg.push("Invalid Serial Number");
+        }
+        if(data.date == ""){
+            valid = false;
+            errorMsg.push("Purchased date is required");
+        }
+        if(data.address == ""){
+            valid = false;
+            errorMsg.push("Address is required.");
+        }
+        if(data.state == ""){
+            valid = false;
+            errorMsg.push("State is required.");
+        }
+        if(data.postcode == ""){
+            valid = false;
+            errorMsg.push("Postcode is required.");
+        }
+        if(data.country == ""){
+            valid = false;
+            errorMsg.push("Country is required.");
+        }
+        if(data.file == ""){
+            valid = false;
+            errorMsg.push("Please upload the receipt before submitting the form.");
+        }
+
+        if(!valid){
+            let error = "";
+            errorMsg.map( (i) =>{
+                error += "<p>"+i+"</p>";
+            });
+            this.setState({
+                submitStatus: "error",
+                formMsg: error
+            });
+        }
+    }
+
 
     render() {
         return (
@@ -117,31 +186,31 @@ export default class P600 extends React.Component {
                                 <div className="form-ele">
                                     <div className="form-col2">
                                         <label htmlFor="firstname">FIRST NAME*</label>
-                                        <input id="firstname" type="text" name="firstname" onChange={this.handleChange}/>
+                                        <input id="firstname" type="text" value={this.state.formValue.firstname} name="firstname" onChange={this.handleChange}/>
                                     </div>
                                     <div className="form-col2">
                                         <label htmlFor="lastname">LAST NAME*</label>
-                                        <input id="lastname" type="text" name="lastname" onChange={this.handleChange}/>
+                                        <input id="lastname" type="text" name="lastname" value={this.state.formValue.lastname} onChange={this.handleChange}/>
                                     </div>
                                 </div>					
                                 <div className="form-ele">
                                     <div className="form-col2">
                                         <label htmlFor="email">EMAIL*</label>
-                                        <input id="email" type="email" name="email" onChange={this.handleChange}/>
+                                        <input id="email" type="email" name="email" value={this.state.formValue.email} onChange={this.handleChange}/>
                                     </div>
                                     <div className="form-col2">
                                         <label htmlFor="phone">PHONE*</label>
-                                        <input id="phone" type="text" name="phone" onChange={this.handleChange}/>
+                                        <input id="phone" type="text" name="phone" value={this.state.formValue.phone} onChange={this.handleChange}/>
                                     </div>
                                 </div>
                                 <div className="form-ele">
                                     <div className="form-col2">
                                         <label htmlFor="serialNo">Lifestyle® 650 serial number*</label>
-                                        <input id="serialNo" type="text" name="serialNo" onChange={this.handleChange}/>
+                                        <input id="serialNo" type="text" name="serialNo" value={this.state.formValue.serialNo} onChange={this.handleChange}/>
                                     </div>
                                     <div className="form-col2">
                                         <label htmlFor="dop">Date of purchase</label>
-                                        <DayPickerInput id="dop" name="date" placeholder="DD/MM/YYYY" format="DD/MM/YYYY" onDayChange={this.handleDayClick} value={ this.state.formValue.date } />
+                                        <DayPickerInput id="dop" name="date" placeholder="DD/MM/YYYY" format="DD/MM/YYYY" value={this.state.formValue.date} onDayChange={this.handleDayClick} value={ this.state.formValue.date } />
                                     </div>
                                 </div>
                                 <div className="form-ele">
@@ -152,15 +221,15 @@ export default class P600 extends React.Component {
                                 </div>
                                 <div className="form-ele">
                                     <div className="form-col2">
-                                        <input id="city" type="text" name="city" onChange={this.handleChange} placeholder="City/ Town*"/>
+                                        <input id="city" type="text" name="city" onChange={this.handleChange} value={ this.state.formValue.city } placeholder="City/ Town*"/>
                                     </div>
                                     <div className="form-col2">
-                                        <input id="state" type="text" name="state" onChange={this.handleChange} placeholder="State*"/>
+                                        <input id="state" type="text" name="state" onChange={this.handleChange} value={ this.state.formValue.state } placeholder="State*"/>
                                     </div>
                                 </div>
                                 <div className="form-ele">
                                     <div className="form-col2">
-                                        <input id="postcode" type="text" name="postcode" onChange={this.handleChange} placeholder="Postcode*"/>
+                                        <input id="postcode" type="text" name="postcode" value={ this.state.formValue.postcode } onChange={this.handleChange} placeholder="Postcode*"/>
                                     </div>
                                     <div className="form-col2">
                                         <select id="country" name="country" value={ this.state.formValue.country } onChange={this.handleChange}>
@@ -188,7 +257,7 @@ export default class P600 extends React.Component {
                                 </div>
                                 <div className="form-ele">
                                     <div className="form-col1">
-                                        <input type="checkbox" id="newsletter" name="newsletter" onChange={this.handleChange}/><label className="forcheck">Yes, I'd like email updates regarding new products and promotions from Bose®.</label>
+                                    <label className="forcheck"><input type="checkbox" id="newsletter" name="newsletter" onChange={this.handleChange}/>Yes, I'd like email updates regarding new products and promotions from Bose®.</label>
                                     </div>
                                 </div>
                                 <div className="form-ele">
@@ -198,7 +267,9 @@ export default class P600 extends React.Component {
                                 </div>
                                 <div className="form-ele">
                                     <div className="form-col1">
-                                        <div className="msg"></div>
+                                        <div className={ "msg "+ this.state.submitStatus }>
+                                            <div dangerouslySetInnerHTML={{ __html: this.state.formMsg }} />
+                                        </div>
                                     </div>
                                 </div>
                             </form>
