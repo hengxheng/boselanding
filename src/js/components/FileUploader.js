@@ -11,15 +11,18 @@ export default class FileUploader extends React.Component {
             uploaded: false,
             file: undefined,
             uploadedFile: "",
-            percentCompleted: 0
+            percentCompleted: 0,
+            outputMessage: ""
         }
         this.onDrop = this.onDrop.bind(this);
+        this.onDropRejected = this.onDropRejected.bind(this);
     }
 
     onDrop(file){
         this.setState({
             ...this.state,
             droped: true,
+            outputMessage: "",
             file
         });
     }
@@ -28,8 +31,8 @@ export default class FileUploader extends React.Component {
         this.setState({
             ...this.state,
             droped: false,
+            outputMessage: "Maximum file upload size is 2MB"
         });
-        console.log('Maximum file upload size is 2MB');
     }
 
     onUpload(e){
@@ -38,6 +41,7 @@ export default class FileUploader extends React.Component {
         if(Array.isArray(this.state.file)){
             e.stopPropagation();
 
+            //change state for showing progress bar
             this.setState({
                 ...this.state,
                 uploading: true    
@@ -46,6 +50,8 @@ export default class FileUploader extends React.Component {
             const f = this.state.file[0];
             const formFile = new FormData();
             formFile.append('uploadfile', f, f.name);
+
+            //server upload progress url
             const file_url = document.location.origin+"/bose_landing/server/ajax-file-upload.php";
 
             const config = {
@@ -97,7 +103,7 @@ export default class FileUploader extends React.Component {
                         <div className="progress-bar" style={ progressWidth }></div>
                         <div className="status">{ this.state.percentCompleted }%</div>
                     </div>
-                    <div id="output">{}</div>
+                    <div id="output">{ this.state.outputMessage }</div>
                     <a href="#" id="uplaod-btn" onClick={ (e) => { this.onUpload(e) } }>UPLOAD</a>
                 </Dropzone>
             </div>
