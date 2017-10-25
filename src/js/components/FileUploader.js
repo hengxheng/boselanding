@@ -16,12 +16,14 @@ export default class FileUploader extends React.Component {
         }
         this.onDrop = this.onDrop.bind(this);
         this.onDropRejected = this.onDropRejected.bind(this);
+        this.onUpload = this.onUpload.bind(this);
     }
 
     onDrop(file){
         this.setState({
             ...this.state,
             droped: true,
+            uploading: false,
             outputMessage: "",
             file
         });
@@ -65,12 +67,9 @@ export default class FileUploader extends React.Component {
             };
 
             axios.post(file_url, formFile, config)
-                .then(response => {
-                    console.log(response);
-                    this.setState({
-                        ...this.state,
-                        uploadedFile: response.data
-                    });
+                .then(res => {
+                    console.log(res);
+                    this.props.doneUpdate(res.data);
                 })
                 .catch(error => {
                     console.log(error)

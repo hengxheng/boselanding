@@ -21,12 +21,15 @@ export default class P600 extends React.Component {
                 postcode:"",
                 country:"",
                 newsletter: false,
-                color: "Arctic White",   
+                color: "Arctic White",
+                file:""   
             },
+            fileUploaded : false,
             selectedDays : new Date()
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleDayClick =this.handleDayClick.bind(this);
+        this.doneUpdate = this.doneUpdate.bind(this);
     }
 
     handleChange(e){
@@ -51,6 +54,17 @@ export default class P600 extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         console.log( this.state.formValue );
+    }
+
+    doneUpdate(fileName){
+        console.log("File name is: ", fileName);
+        if(fileName != "" && (typeof fileName != "undefined")){
+            const old_state = this.state.formValue;
+            Object.assign(old_state, { file: fileName });
+            this.setState({
+                formValue: old_state
+            });
+        }
     }
 
     render() {
@@ -131,12 +145,12 @@ export default class P600 extends React.Component {
                                         <input id="city" type="text" name="city" onChange={this.handleChange} placeholder="City/ Town*"/>
                                     </div>
                                     <div className="form-col2">
-                                        <input id="city" type="text" name="state" onChange={this.handleChange} placeholder="State*"/>
+                                        <input id="state" type="text" name="state" onChange={this.handleChange} placeholder="State*"/>
                                     </div>
                                 </div>
                                 <div className="form-ele">
                                     <div className="form-col2">
-                                        <input id="city" type="text" name="city" onChange={this.handleChange} placeholder="Postcode*"/>
+                                        <input id="postcode" type="text" name="postcode" onChange={this.handleChange} placeholder="Postcode*"/>
                                     </div>
                                     <div className="form-col2">
                                         <select id="country" name="country" value={ this.state.formValue.country } onChange={this.handleChange}>
@@ -149,7 +163,7 @@ export default class P600 extends React.Component {
                                 <div className="form-ele">
                                     <div className="form-col1">
                                         <label>Submit receipt*</label>
-                                        <FileUploader doneUpload = {() => { this.doneUpdate }}/>
+                                        <FileUploader doneUpdate = {this.doneUpdate}/>
                                     </div>
                                 </div>
                                 <div id="upload-output"></div>
