@@ -8,31 +8,28 @@
 
 	if ($conn->connect_error) {
 	    die("Connection failed: " . $conn->connect_error);
-	} 
+	}
 
-
-	$fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
+	$firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+	$lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
 	$phone = mysqli_real_escape_string($conn, $_POST['phone']);
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
+	$serialNo = mysqli_real_escape_string($conn, $_POST['serialNo']);
+	$date = mysqli_real_escape_string($conn, $_POST['date']);
+	$address1 = mysqli_real_escape_string($conn, $_POST['address1']);
+	$city = mysqli_real_escape_string($conn, $_POST['city']);
 	$state = mysqli_real_escape_string($conn, $_POST['state']);
-	$link = mysqli_real_escape_string($conn, $_POST['link']);
-	$photo = mysqli_real_escape_string($conn, $_POST['uploaded-file-name']);
+	$postcode = mysqli_real_escape_string($conn, $_POST['postcode']);
+	$color = mysqli_real_escape_string($conn, $_POST['color']);
+	$country = mysqli_real_escape_string($conn, $_POST['country']);
+	$file = mysqli_real_escape_string($conn, $_POST['file']);
 	$newsletter = mysqli_real_escape_string($conn, $_POST['newsletter']);
 	if(!$newsletter){
 		$newsletter = "off";
 	}
 
-	$photo_dir = "upload/";
-
-	$photo_file = $photo_dir.$photo;
-	
-	if (move_uploaded_file($_FILES["upload-photo"]["tmp_name"], $photo_file)) {
-    } else {
-        echo "Sorry, there was an error uploading your photo.";
-    }
-
-
-	$sql = "INSERT INTO {$table_name} (name, email, phone, state, upload_file, link, newsletter) VALUES ('{$fullname}', '{$email}', '{$phone}', '{$state}', '{$photo_file}', '{$link}', '{$newsletter}')";
+	$sql = "INSERT INTO {$table_name} (firstname, lastname, email, phone, serialNo, purchased_date, address1, city, state, postcode, country, color, file, newsletter) VALUES 
+	('{$firstname}', '${$lastname}', '{$email}', '{$phone}', '{$serialNo}', '{$date}', '{$address1}', '{$city}', '{$state}', '{$postcode}', '{$country}', '{$color}', '{$file}', '{$newsletter}')";
 
 	if ($conn->query($sql) === TRUE) {
 	    

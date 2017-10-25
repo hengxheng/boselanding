@@ -5,6 +5,7 @@ import DayPickerInput from "react-day-picker/DayPickerInput";
 import P600BG from "../../images/p600-right.jpg";
 import FileUploader from "../components/FileUploader";
 import scrollToElement from 'scroll-to-element';
+import axios from 'axios';
 
 export default class P600 extends React.Component {
     constructor(){
@@ -59,7 +60,6 @@ export default class P600 extends React.Component {
     
 
     doneUpdate(fileName){
-        console.log("File name is: ", fileName);
         if(fileName != "" && (typeof fileName != "undefined")){
             const old_state = this.state.formValue;
             Object.assign(old_state, { file: fileName });
@@ -84,6 +84,7 @@ export default class P600 extends React.Component {
         let valid = true;
         let errorMsg = [];
 
+        //form validation
         let checkEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let checkPhone = /^\d+$/;
         let checkSerial = /^\d{6}$/;
@@ -142,6 +143,22 @@ export default class P600 extends React.Component {
                 submitStatus: "error",
                 formMsg: error
             });
+        }
+        else{
+            this.setState({
+                submitStatus: "",
+                formMsg: ""
+            });
+
+            const submited_url = document.location.origin+"/bose_landing/server/form.php";
+            axios.post(submited_url, data)
+                .then( res => {
+                        console.log(res);
+                    }
+                )
+                .catch(error => {
+                    console.log(error)
+                });
         }
     }
 

@@ -54,8 +54,8 @@ export default class FileUploader extends React.Component {
             formFile.append('uploadfile', f, f.name);
 
             //server upload progress url
-            const file_url = document.location.origin+"/bose_landing/server/ajax-file-upload.php";
-
+            // const file_url = document.location.origin+"/bose_landing/server/ajax-file-upload.php";
+            const file_url = "http://localhost/bose_landing/server/ajax-file-upload.php";
             const config = {
                 onUploadProgress: (progressEvent) => {
                     let percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
