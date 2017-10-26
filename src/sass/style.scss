@@ -173,7 +173,11 @@ footer.site-footer{
     text-align: center;
     color: #fff;
     padding-top: 300px;
-    
+    @media screen and (max-width: 650px){
+      width: 80%;
+      margin: 0 auto;
+      padding: 200px 0 150px 0 ;
+    }
     h3{
       font-size: 25px;
       margin: 0 0 20px;
@@ -192,6 +196,17 @@ footer.site-footer{
     a.btn-w{
       opacity:0;
     }
+    @media screen and (max-width: 650px){
+      h3{
+        opacity: 1;
+      }
+      p{
+        opacity: 1;
+      }
+      a.btn-w{
+        opacity: 1;
+      }
+    }
   }
 }
 
@@ -203,10 +218,16 @@ footer.site-footer{
   width: 100%;
   z-index:2;
   transition: all 0.5s ease-in;
+  @media screen and (max-width: 650px){
+    clip-path: none;
+  }
   &.left{
     // width: 65%;
     transition: all 0.5s ease-in;
     clip-path: polygon(0 0, 55% 0%, 45% 100%, 0% 100%);
+    @media screen and (max-width: 650px){
+      clip-path: none;
+    }
     h3{
       opacity: 1;
     }
@@ -221,9 +242,15 @@ footer.site-footer{
     // width: 45%;
     clip-path: polygon(0 0, 45% 0, 55% 100%, 0% 100%);
     transition: all 0.5s ease-in;
+    @media screen and (max-width: 650px){
+      clip-path: none;
+    }
   }
   .home-banner-content{
     float:left;
+    @media screen and (max-width: 650px){
+      float:none;
+    }
   }
 }
 
@@ -244,6 +271,9 @@ footer.site-footer{
   }
   .home-banner-content{
     float:right;
+    @media screen and (max-width: 650px){
+      float:none
+    }
   }
 }
 
@@ -333,6 +363,9 @@ footer.site-footer{
     top:50px;
     left: 46%;
     z-index: 3;
+    @media screen and (max-width: 650px){
+      left:0;
+    }
   }
 }
 
