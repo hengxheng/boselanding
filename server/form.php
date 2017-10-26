@@ -15,6 +15,7 @@
 	$phone = mysqli_real_escape_string($conn, $_POST['phone']);
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
 	$serialNo = mysqli_real_escape_string($conn, $_POST['serialNo']);
+	$product = mysqli_real_escape_string($conn, $_POST['product']);
 	$date = mysqli_real_escape_string($conn, $_POST['date']);
 	$address1 = mysqli_real_escape_string($conn, $_POST['address']);
 	$city = mysqli_real_escape_string($conn, $_POST['city']);
@@ -31,8 +32,8 @@
 		$newsletter = "off";
 	}
 
-	$sql = "INSERT INTO {$table_name} (firstname, lastname, email, phone, serialNo, purchased_date, address1, city, state, postcode, country, color, upload_file, newsletter) VALUES 
-	('{$firstname}', '{$lastname}', '{$email}', '{$phone}', '{$serialNo}', '{$date}', '{$address1}', '{$city}', '{$state}', '{$postcode}', '{$country}', '{$color}', '{$file}', '{$newsletter}')";
+	$sql = "INSERT INTO {$table_name} (firstname, lastname, email, phone, serialNo, purchased_product, purchased_date, address1, city, state, postcode, country, color, upload_file, newsletter) VALUES 
+	('{$firstname}', '{$lastname}', '{$email}', '{$phone}', '{$serialNo}', '{$product}', '{$date}', '{$address1}', '{$city}', '{$state}', '{$postcode}', '{$country}', '{$color}', '{$file}', '{$newsletter}')";
 
 	if ($conn->query($sql) === TRUE) {
 	    

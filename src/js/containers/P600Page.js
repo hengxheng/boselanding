@@ -12,7 +12,7 @@ export default class P600 extends React.Component {
         super();
         this.state = {
             formValue: {
-                productName: "Lifestyle® 600",
+                product: "Lifestyle® 600",
                 firstname: "",
                 lastname: "",
                 email:"",

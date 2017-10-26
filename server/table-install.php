@@ -15,6 +15,7 @@
             phone VARCHAR(50),
             email VARCHAR(50),
             serialNo VARCHAR(10),
+            purchased_product VARCHAR(50),
             purchased_date VARCHAR(50),
             address1 VARCHAR(150),
             city VARCHAR(50),
