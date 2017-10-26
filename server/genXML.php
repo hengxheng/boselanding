@@ -18,7 +18,6 @@
 
     try{
         $xml=simplexml_load_file("promo.xml");
-        var_dump($xml);
         foreach ($records as $f){
 
             $BusinessPartner = $xml->CustomerOrderRegistrationBulk->Customer->BusinessPartner;
@@ -87,6 +86,7 @@
 
             $xml->asXml('../xml/'.$f['id'].'.xml');
 
+            echo "done";
         }
     }
     catch (Exception $e) {
