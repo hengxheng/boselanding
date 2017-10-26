@@ -40,6 +40,8 @@
 
 $dark: #242424;
 $grey: #edebd4;
+$site-width: 1100px;
+
 body, html{
     padding:0;
     margin:0;
@@ -63,10 +65,13 @@ h2, strong{
 }
 
 .site-inner{
-  width: 1100px;
+  width: $site-width;
   margin: 0 auto;
   padding: 0 15px;
   box-sizing: border-box;
+  @media screen and (max-width: $site-width){
+    width: 100%;
+  }
 }
 
 .btn-w{
@@ -148,6 +153,9 @@ footer.site-footer{
   height: calc( 100vh - 158px);
   overflow: hidden;
   position: relative;
+  @media screen and (max-width: 650px){
+    height: auto;
+  }
   .home-banner{
     position: absolute;
     top:0;
@@ -156,7 +164,9 @@ footer.site-footer{
     bottom:0;
     width: 100%;
     height: 100%;
-    
+    @media screen and (max-width: 650px){
+      position: static;
+    }
   }
   .home-banner-content{
     width: 450px;
@@ -259,6 +269,14 @@ footer.site-footer{
         font-size: 16px;
         margin: 0 0 20px;
       }
+      @media screen and (max-width: 650px){
+        width: 90%;
+        box-sizing: border-box;
+        padding: 20px;
+        h2{
+          font-size: 42px;
+        }
+      }
     }
   }
 }
@@ -302,6 +320,12 @@ footer.site-footer{
         font-size: 40px;
         margin: 0 0 15px;
       }
+      @media screen and (max-width: 650px){
+        width: 90%;
+        box-sizing: border-box;
+        padding: 20px;
+        margin: 0 auto;
+      }
     }
   }
   .page-middle-bg{
@@ -330,6 +354,12 @@ footer.site-footer{
       padding: 50px;
       box-sizing: border-box;
       border-radius: 3px;
+      @media screen and (max-width: 650px){
+        padding: 50px 15px;
+      }
+    }
+    @media screen and (max-width: 650px){
+      width: 90%;
     }
   }
 }
@@ -347,6 +377,12 @@ footer.site-footer{
     width: 50%;
     box-sizing: border-box;
     padding: 0 10px;
+    @media screen and (max-width: 650px){
+      width: 100%;
+      &:first-child{
+        margin: 0 0 20px;
+      }
+    }
   }
   label{
     display:block;
