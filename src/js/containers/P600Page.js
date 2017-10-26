@@ -51,7 +51,7 @@ export default class P600 extends React.Component {
 
     handleDayClick(day){
         const old_state = this.state.formValue;
-        Object.assign(old_state, { date : day.format('DD/MM/YYYY')  });
+        Object.assign(old_state, { date : day.format('YYYY-MM-DD')  });
         this.setState({
             formValue: old_state
         });
@@ -117,6 +117,10 @@ export default class P600 extends React.Component {
             valid = false;
             errorMsg.push("Address is required.");
         }
+        if(data.city == ""){
+            valid = false;
+            errorMsg.push("City is required.");
+        }
         if(data.state == ""){
             valid = false;
             errorMsg.push("State is required.");
@@ -155,10 +159,13 @@ export default class P600 extends React.Component {
                 return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
             }).join('&');
 
-            console.log("Params: ", params);
             axios.post(submited_url, params)
                 .then( res => {
                         console.log(res.data);
+                        this.setState({
+                            submitStatus: "success",
+                            formMsg: "<p>Thank you for submitting a request to redeem a free product. We will be in touch shortly.</p>"
+                        });
                     }
                 )
                 .catch(error => {
@@ -232,7 +239,7 @@ export default class P600 extends React.Component {
                                     </div>
                                     <div className="form-col2">
                                         <label htmlFor="dop">Date of purchase</label>
-                                        <DayPickerInput id="dop" name="date" placeholder="DD/MM/YYYY" format="DD/MM/YYYY" value={this.state.formValue.date} onDayChange={this.handleDayClick} value={ this.state.formValue.date } />
+                                        <DayPickerInput id="dop" name="date" placeholder="YYYY-MM-DD" format="YYYY-MM-DD" value={this.state.formValue.date} onDayChange={this.handleDayClick} value={ this.state.formValue.date } />
                                     </div>
                                 </div>
                                 <div className="form-ele">
@@ -246,8 +253,21 @@ export default class P600 extends React.Component {
                                         <input id="city" type="text" name="city" onChange={this.handleChange} value={ this.state.formValue.city } placeholder="City/ Town*"/>
                                     </div>
                                     <div className="form-col2">
-                                        <input id="state" type="text" name="state" onChange={this.handleChange} value={ this.state.formValue.state } placeholder="State*"/>
-                                    </div>
+                                        <select id="state" name="state" onChange={this.handleChange} value={ this.state.formValue.state }>
+                                            <option value="">State*</option>
+                                            <option value="NSW">NSW</option>
+                                            <option value="ACT">ACT</option>
+                                            <option value="LHI">LHI</option>
+                                            <option value="NSW">NSW</option>
+                                            <option value="NT">NT</option>
+                                            <option value="QLD">QLD</option>
+                                            <option value="SA">SA</option>
+                                            <option value="TAS">TAS</option>
+                                            <option value="VIC">VIC</option>
+                                            <option value="WA">WA</option>
+                                            <option value="NZ">NZ</option>
+                                        </select>
+                                   </div>
                                 </div>
                                 <div className="form-ele">
                                     <div className="form-col2">

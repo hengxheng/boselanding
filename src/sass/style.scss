@@ -497,6 +497,19 @@ footer.site-footer{
   color: $dark;
   font-size: 14px;
   line-height: 18px;
+  text-align: left;
+  box-sizing: border-box;
+  padding: 15px;
+  &.error{
+    border: 1px solid #d70902;
+    padding-left: 50px;
+    background:url(../images/cross.png) no-repeat 15px 15px;
+  }
+  &.success{
+    border: 1px solid #00cc74;
+    padding-left: 50px;
+    background:url(../images/tick.png) no-repeat 15px 15px;
+  }
   p{
       margin: 0 0 10px;
   }
