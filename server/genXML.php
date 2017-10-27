@@ -94,7 +94,9 @@
 
             $xml->asXml("../xml/Lifestyle-AULS".$f['id']."-".$f['id'].".xml");
 
-            echo "done";
+            echo "<p>";
+            echo "Lifestyle-AULS".$f['id']."-".$f['id'].".xml generated. <br/>";
+            echo "</p>";
         }
     }
     catch (Exception $e) {
