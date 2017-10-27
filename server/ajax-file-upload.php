@@ -1,6 +1,6 @@
 <?php 
 	// Upload files
-
+    date_default_timezone_set("Australia/Sydney");
 	$temp = explode(".", $_FILES["uploadfile"]["name"]);
 	$extension = end($temp);
 
