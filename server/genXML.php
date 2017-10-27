@@ -43,15 +43,20 @@
             $BusinessPartner->AddressInformation->Address->Telephone[0]->Number->CountryCode = $f['country'];
             $BusinessPartner->AddressInformation->Address->EMail->URI = $f['email'];
 
-            $xml->CustomerOrderRegistrationBulk->Customer->MarketingPermissions->AssignedMarketingPermission[1]->ValidFrom = $f['purchased_date'];
-            $xml->CustomerOrderRegistrationBulk->Customer->MarketingPermissions->AssignedMarketingPermission[1]->Permission = "002";
-            $xml->CustomerOrderRegistrationBulk->Customer->MarketingPermissions->AssignedMarketingPermission[1]->Origin = "email";
+            $xml->CustomerOrderRegistrationBulk->Customer->MarketingPermissions->AssignedMarketingPermission[1]->ValidFrom = $c_date;
+            
+            $opt_code = "002";
+            if($f['newsletter'] == "on"){
+                $opt_code = "001";
+            }
+
+            $xml->CustomerOrderRegistrationBulk->Customer->MarketingPermissions->AssignedMarketingPermission[1]->Permission = $opt_code;
 
             $Order =  $xml->CustomerOrderRegistrationBulk->Order;
-            $Order->SalesOrder->BuyerID = $f['id'];
-            $Order->SalesOrder->Date = $f['purchased_date'];
-            $Order->SalesOrder->BuyerDate = $f['purchased_date'];
-            $Order->SalesOrder->TextCollection->Text->TextContent->Text ="Redemption - Purchased Lifestyle® 535 home theatre system. Serial of Product: ".$f['serialNo']." Bonus product(s): SoundTouch® 20 Black. Reference: ".$f['id'];
+            $Order->SalesOrder->BuyerID = "Lifestyle-AULS".$f['id']."-".$f['id'];
+            $Order->SalesOrder->Date = $c_date;
+            $Order->SalesOrder->BuyerDate = $c_date;
+            $Order->SalesOrder->TextCollection->Text->TextContent->Text ="Redemption - Purchased ".$f['purchased_product'].". Serial of Product: ".$f['serialNo']." Bonus product(s): SoundTouch® 20 Black. Reference: Lifestyle-AULS".$f['id']."-".$f['id'];
             
 
             //Attachment
@@ -65,6 +70,9 @@
             $MIMECode = "image/jpeg";
             if($ext[1] == "png"){
                 $MIMECode = "image/png";
+            }
+            elseif($ext[1] == "pdf"){
+                $MIMECode = "application/pdf";
             }
 
             $AttachmentFolder->MIMECode = $MIMECode;
@@ -80,11 +88,11 @@
             unset($Order->SalesOrder->Item->Party->InternalID);
             
             $IndividualMaterial =  $xml->CustomerOrderRegistrationBulk->Registration->IndividualMaterial;
-            $IndividualMaterial->ObjectWarranties->StartDate = $c_date;
-            $IndividualMaterial->InvolvedParties->ValidityStartDate = $c_date;
+            $IndividualMaterial->ObjectWarranties->StartDate = $f['purchased_product'];
+            $IndividualMaterial->InvolvedParties->ValidityStartDate = $f['purchased_product'];
             $IndividualMaterial->ERPIdentification->SerialID = $f['serialNo'];
 
-            $xml->asXml('../xml/'.$f['id'].'.xml');
+            $xml->asXml("../xml/Lifestyle-AULS".$f['id']."-".$f['id'].".xml");
 
             echo "done";
         }

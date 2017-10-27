@@ -75,10 +75,18 @@ module.exports = {
                 postcss: [autoprefixer]
             }
         }),
+        
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),
         new CleanWebpackPlugin(['dist']),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.optimize.UglifyJsPlugin({
+            minimize: true,
+            sourceMap: true,
+            compress: {
+              warnings: false
+            }
+        })
     ]
 };

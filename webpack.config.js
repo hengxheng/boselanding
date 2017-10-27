@@ -22,7 +22,7 @@ module.exports = {
     devServer: {
         hot: true,
         inline: true,
-        port: 8080,
+        port: 7080,
         historyApiFallback: true
     },
     devtool: 'inline-source-map',
