@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+
 const extractPlugin = new ExtractTextPlugin({
         filename: 'main.css'
     });
@@ -18,12 +19,6 @@ module.exports = {
         path: DIST_DIR,
         filename: 'bundle.js',
         publicPath: '/dist/'
-    },
-    devServer: {
-        hot: true,
-        inline: true,
-        port: 8080,
-        historyApiFallback: true
     },
     devtool: 'inline-source-map',
     module: {
@@ -84,7 +79,6 @@ module.exports = {
             template: 'src/index.html'
         }),
         new CleanWebpackPlugin(['dist']),
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
     ]
 };
