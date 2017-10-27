@@ -82,10 +82,11 @@ export default class FileUploader extends React.Component {
         let DropAreaStyle = {
             outline: "1px dashed #888",
             width: "100%",
-            height: "180px",
+            height: "160px",
             boxSizing: "border-box",
             padding: "30px",
-            fontSize: "18px"
+            fontSize: "18px",
+            cursor: "pointer"
         }
 
         let progressWidth = {
@@ -93,7 +94,7 @@ export default class FileUploader extends React.Component {
         };
             
         return (
-            <div id="file-upload-zone" className={ this.state.uploading? "uploading" : "waiting"}>
+            <div id="file-upload-zone" className={ this.state.uploading? "uploading" : (this.state.droped?"droped":"waiting")}>
                 <Dropzone id="file-upload-area" style={ DropAreaStyle } accept="image/jpeg, image/png" maxSize={2097152} onDrop={this.onDrop} onDropRejected={this.onDropRejected}>
                     <div className="box__input">
                         <p>{ this.state.droped? (Array.isArray(this.state.file)? this.state.file[0].name : ""): "Drop or click to upload"}</p>

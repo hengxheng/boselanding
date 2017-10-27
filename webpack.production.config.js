@@ -20,7 +20,7 @@ module.exports = {
         filename: 'bundle.js',
         publicPath: '/dist/'
     },
-    devtool: 'inline-source-map',
+    devtool: 'cheap-module-source-map',
     module: {
         rules: [
             {
