@@ -235,7 +235,7 @@ export default class P600 extends React.Component {
                                 </div>
                                 <div className="form-ele">
                                     <div className="form-col2">
-                                        <label htmlFor="serialNo">Lifestyle® 650 serial number*</label>
+                                        <label htmlFor="serialNo">Lifestyle® 600 serial number*</label>
                                         <input id="serialNo" type="text" name="serialNo" value={this.state.formValue.serialNo} onChange={this.handleChange}/>
                                     </div>
                                     <div className="form-col2">

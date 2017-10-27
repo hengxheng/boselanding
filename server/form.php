@@ -25,7 +25,7 @@
 	$country = mysqli_real_escape_string($conn, $_POST['country']);
 	$file = mysqli_real_escape_string($conn, $_POST['file']);
 	$newsletter = mysqli_real_escape_string($conn, $_POST['newsletter']);
-	if($newsletter){
+	if($newsletter=="true"){
 		$newsletter = "on";
 	}
 	else{
@@ -42,5 +42,4 @@
 	}
 
 	$conn->close();
-	// header("Location: ".$base_url."/thankyou.php");
 ?>
