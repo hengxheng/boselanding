@@ -194,10 +194,10 @@ export default class P600 extends React.Component {
                         <div className="site-inner">
                             <div className="middle-text-block">
                                 <div className="middle-text-inner">
-                                    <p><strong>EXCEPTIONAL PERFORMANCE. ELEGANT DESIGN.</strong></p>
-                                    <h2>Wave® SoundTouch® music system IV</h2>
-                                    <p>There's a world of music out there. This compact system lets you easily enjoy all of it. Use it to stream millions of songs from music services such as Spotify® and Deezer®, thousands of Internet radio stations and the music stored on your smartphone, tablet or computer.</p>
-                                    <a href="#" className="btn-w" target="_blank">LEARN MORE</a>
+                                    <p><strong>ROOM-FILLING SOUND. COMPACT DESIGN.</strong></p>
+                                    <h2>SoundTouch® 20 wireless speaker</h2>
+                                    <p>Fill an apartment with sound or flood a home with music. SoundTouch® speakers are made for the way you live—and they’re made to grow with you, too. Once you have one, you can add more at any time. They all work together. So as you go from room to room, your music goes along with you.</p>
+                                    <a href="https://www.bose.com.au/en_au/products/speakers/multi_room_speakers/soundtouch-20-wireless-music-system.html#v=soundtouch_20_ii_black_anz_in_uae" className="btn-w" target="_blank">LEARN MORE</a>
                                 </div>
                             </div>
                         </div>
@@ -293,7 +293,7 @@ export default class P600 extends React.Component {
                                     <div className="form-col1">
                                         <label htmlFor="color">Pick color of FREE Wave® SoundTouch® music system IV</label>
                                         <select id="color" name="color" value={ this.state.formValue.color } onChange={this.handleChange}>
-                                            <option value="Arctic White">Arctic White</option>
+                                            <option value="White">White</option>
                                             <option value="Black">Black</option>
                                         </select>
                                     </div>

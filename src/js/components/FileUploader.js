@@ -97,7 +97,7 @@ export default class FileUploader extends React.Component {
             <div id="file-upload-zone" className={ this.state.uploading? "uploading" : (this.state.droped?"droped":"waiting")}>
                 <Dropzone id="file-upload-area" style={ DropAreaStyle } accept="image/jpeg, image/png, application/pdf" maxSize={5097152} onDrop={this.onDrop} onDropRejected={this.onDropRejected}>
                     <div className="box__input">
-                        <p>{ this.state.droped? (Array.isArray(this.state.file)? this.state.file[0].name : ""): "Drop or click to upload"}</p>
+                        <p>{ this.state.droped? (Array.isArray(this.state.file)? this.state.file[0].name : ""): "Drop or click to upload pdf or image (png, jpg)"}</p>
                     </div>
                     <div id="progress-wrp">
                         <div className="progress-bar" style={ progressWidth }></div>

@@ -36,10 +36,10 @@ export default class Home extends React.Component {
                             <div className="home-banner-content" onMouseEnter={ () => { this.hoverLeft() } }>
                                 <div className="home-banner-text">
                                     <h3>I JUST PURCHASED</h3>
-                                    <h2>Lifestyle 600<br/>system</h2>
-                                    <p>Get your FREE SoundTouch® 20<br/>wireless system</p>
-                                    <Link to="/product-600" className="btn-w">CLICK HERE</Link>
-                                </div>
+                                    <h2>Lifestyle 650<br/>system</h2>
+                                    <p>Get your FREE Wave®SoundTouch® music system IV</p>
+                                    <Link to="/product-650" className="btn-w">CLICK HERE</Link>
+                                </div>      
                             </div>
                         </div>
                     </div>
@@ -48,9 +48,9 @@ export default class Home extends React.Component {
                             <div className="home-banner-content" onMouseEnter={ () => { this.hoverRight() } }>                            
                                 <div className="home-banner-text">
                                     <h3>I JUST PURCHASED</h3>
-                                    <h2>Lifestyle 650<br/>system</h2>
+                                    <h2>Lifestyle 600<br/>system</h2>
                                     <p>Get your FREE SoundTouch® 20<br/>wireless system</p>
-                                    <Link to="/product-650" className="btn-w">CLICK HERE</Link>
+                                    <Link to="/product-600" className="btn-w">CLICK HERE</Link>
                                 </div>
                             </div>
                         </div>
