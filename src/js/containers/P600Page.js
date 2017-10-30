@@ -184,7 +184,7 @@ export default class P600 extends React.Component {
                         <div className="page-header-inner">
                             <h3>Thank you for purchasing</h3>
                             <h2>Lifestyle® 600 home entertainment system.</h2>
-                            <p>For a limited time, receive a FREE Wave®SoundTouch® music system when you purchase a Lifestyle® 650 home entertainment system.</p>
+                            <p>For a limited time, receive an FREE SoundTouch® 20 wireless system when you purchase a Lifestyle® 600 home entertainment system and easily personalise presets for one-touch access to the music you love.</p>
                             <a href="#" id="redeem-btn" className="btn-b" onClick={ (e) => this.scrollToForm(e) }>REDEEM FREE PRODUCT</a>
                         </div>
                     </div>
@@ -210,7 +210,7 @@ export default class P600 extends React.Component {
                 <div id="page-form" className="page-form">
                     <div className="site-inner">
                         <div className="form-block">
-                        <h3 className="form-header">Please enter your details below to receive FREE Wave®SoundTouch® music system IV</h3>
+                        <h3 className="form-header">Please enter your details below to receive FREE SoundTouch® 20 wireless system</h3>
                             <form id="submit-form" action="#" method="post" encType="multipart/form-data"
                             onSubmit = { (e) => { this.handleSubmit(e) } } >
                                 <div className="form-ele">
@@ -291,7 +291,7 @@ export default class P600 extends React.Component {
                                 <div id="upload-output"></div>
                                 <div className="form-ele">
                                     <div className="form-col1">
-                                        <label htmlFor="color">Pick color of FREE Wave® SoundTouch® music system IV</label>
+                                        <label htmlFor="color">Pick color of SoundTouch® 20 wireless system</label>
                                         <select id="color" name="color" value={ this.state.formValue.color } onChange={this.handleChange}>
                                             <option value="White">White</option>
                                             <option value="Black">Black</option>
