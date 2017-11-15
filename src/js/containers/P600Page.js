@@ -88,7 +88,7 @@ export default class P600 extends React.Component {
         //form validation
         let checkEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let checkPhone = /^\d+$/;
-        let checkSerial = /^\d{6}$/;
+        let checkSerial = /^(074427|074429|076272|076259).*$/;
 
         if(data.firstname == ""){
             valid = false;
@@ -240,7 +240,7 @@ export default class P600 extends React.Component {
                                     </div>
                                     <div className="form-col2">
                                         <label htmlFor="dop">Date of purchase</label>
-                                        <DayPickerInput id="dop" name="date" placeholder="YYYY-MM-DD" format="YYYY-MM-DD" value={this.state.formValue.date} onDayChange={this.handleDayClick} value={ this.state.formValue.date } />
+                                        <DayPickerInput id="dop" name="date" placeholder="YYYY-MM-DD" format="YYYY-MM-DD" value={this.state.formValue.date} onDayChange={this.handleDayClick} />
                                     </div>
                                 </div>
                                 <div className="form-ele">
